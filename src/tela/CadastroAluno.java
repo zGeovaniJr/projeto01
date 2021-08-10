@@ -5,6 +5,7 @@
  */
 package tela;
 
+import entidade.Aluno;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,12 +70,6 @@ public class CadastroAluno extends javax.swing.JFrame {
         nome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         nome.setText("Nome: ");
 
-        varNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                varNomeActionPerformed(evt);
-            }
-        });
-
         btSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,28 +109,25 @@ public class CadastroAluno extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void varNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varNomeActionPerformed
 
-    }//GEN-LAST:event_varNomeActionPerformed
-
-    
-
-    
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-                boolean erro = carregarAluno();       
-            
+        new Aluno();
+        boolean erro = carregarAluno();
+        if (!erro) {
+            //salvarNoBanco  
+        }
     }
 
-    private boolean carregarAluno(){
+    private boolean carregarAluno() {
         String nome = varNome.getText().trim();
         boolean temErro = false;
-        if(nome.length() >= 3 ){
+        if (nome.length() >= 3) {
             // TODO jogar valor para o objeto aluno
-        }else{
+        } else {
             temErro = true;
             JOptionPane.showMessageDialog(null, "Digite Corretamente o nome. Digite pelo menos 3 digitos!");
         }
-        return false;                                   
+        return false;
 
     }//GEN-LAST:event_btSalvarActionPerformed
 

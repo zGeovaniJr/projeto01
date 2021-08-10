@@ -5,7 +5,7 @@
  */
 package teste;
 
-import aula_01.Aluno;
+import entidade.Aluno;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,5 +31,5 @@ public class TestaAluno {
 //      
 //        JOptionPane.showMessageDialog(null, "Nome: " + aluno.nome + " " + aluno.sobrenome + "\nidade: " + aluno.idade
 //        + "\nSalario: " + aluno.salario + "\ncpf: " + aluno.cpf);
-//    }
+    }
 }

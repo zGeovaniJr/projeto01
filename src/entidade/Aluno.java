@@ -12,7 +12,7 @@ package entidade;
 public class Aluno {
 
     private String nome;
-    private String idade;
+    private int idade;
     private String telefone;
     private float salario;
     private String lodradouro;
@@ -26,14 +26,6 @@ public class Aluno {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getIdade() {
-        return idade;
-    }
-
-    public void setIdade(String idade) {
-        this.idade = idade;
     }
 
     public String getTelefone() {
@@ -74,6 +66,22 @@ public class Aluno {
 
     public void setCpf(long cpf) {
         this.cpf = cpf;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
     }
 
 

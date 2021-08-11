@@ -33,6 +33,8 @@ public class Template extends javax.swing.JFrame {
         nome = new javax.swing.JLabel();
         varNome = new javax.swing.JTextField();
         btSalvar = new javax.swing.JButton();
+        nome1 = new javax.swing.JLabel();
+        varIdade = new javax.swing.JFormattedTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -64,7 +66,7 @@ public class Template extends javax.swing.JFrame {
 
         nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         nome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        nome.setText("Nome: ");
+        nome.setText("Nome:");
 
         varNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +82,20 @@ public class Template extends javax.swing.JFrame {
             }
         });
 
+        nome1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nome1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        nome1.setText("Idade:");
+        nome1.setMaximumSize(new java.awt.Dimension(50, 17));
+        nome1.setMinimumSize(new java.awt.Dimension(50, 17));
+        nome1.setPreferredSize(new java.awt.Dimension(50, 17));
+
+        varIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        varIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varIdadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,11 +103,17 @@ public class Template extends javax.swing.JFrame {
             .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nome1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,7 +124,11 @@ public class Template extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nome)
                     .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addComponent(btSalvar)
                 .addGap(147, 147, 147))
         );
@@ -118,6 +144,10 @@ public class Template extends javax.swing.JFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void varIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varIdadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,8 +189,10 @@ public class Template extends javax.swing.JFrame {
     private javax.swing.JButton btSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nome;
+    private javax.swing.JLabel nome1;
     private javax.swing.JPanel principal;
     private javax.swing.JLabel titulo;
+    private javax.swing.JFormattedTextField varIdade;
     private javax.swing.JTextField varNome;
     // End of variables declaration//GEN-END:variables
 }

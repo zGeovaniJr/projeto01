@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class CadastroAluno extends javax.swing.JFrame {
 
     private Aluno aluno;
+
     /**
      * Creates new form CadastroAluno
      */
@@ -128,55 +129,44 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         aluno = new Aluno();
-        boolean erro = carregarAluno();
+        boolean erro = validarFormulario();
         if (!erro) {
-            //salvarNoBanco  
+            JOptionPane.showMessageDialog(null, "Salvo");
         }
     }
 
-    private boolean carregarAluno() {
-        boolean temErro = false;
+    private boolean validarFormulario() {
 
         String nome = varNome.getText().trim();
-        temErro = validarCampo3Valor(nome);
-        if(!temErro){
-            aluno.setNome(nome);
-        }else{
+        if (validarCampo3Valor(nome)) {
+            JOptionPane.showMessageDialog(null, "digite um nome correto!");
+
             return true;
         }
-    
-        return temErro;
+
+        if (validarIdade()) {
+            JOptionPane.showMessageDialog(null, "Digite uma idade valida! ");
+        }
+
+        return false;
 
     }//GEN-LAST:event_btSalvarActionPerformed
 
-    private boolean validarIdade(){
-        boolean temErro = false;
+    private boolean validarIdade() {
+        //boolean temErro = false;
         String idade = varIdade.getText().trim();
-        if(idade.equals("")){
-            temErro = true;
-           JOptionPane.showMessageDialog(null, "digite corretamente sua idade!");
-        }else{
+        if (idade.equals("")) {
+            return true;
+        } else {
             int valorIdade = Integer.parseInt(idade);
-            if(valorIdade <= 16 || valorIdade >= 100){
-                temErro = true;
-                JOptionPane.showMessageDialog(null, "digite corretamente sua idade!");
-                
-            }else{
-                aluno.setIdade(valorIdade);
+            return valorIdade <= 16 || valorIdade >= 100;
             }
         }
-        return temErro;
+
+    private boolean validarCampo3Valor(String valor) {
+        return valor.length() < 3;
     }
-    private boolean validarCampo3Valor(String valor){
-        boolean temErro = false;
-        if (valor.length() >= 3) {
-            aluno.setNome(valor);
-        } else {
-            temErro = true;
-            JOptionPane.showMessageDialog(null, "Digite Corretamente o nome. Digite pelo menos 3 digitos!");
-        } 
-        return temErro;
-    }
+
     /**
      * @param args the command line arguments
      */

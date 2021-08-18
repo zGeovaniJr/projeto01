@@ -35,11 +35,23 @@ public class CadastroAluno extends javax.swing.JFrame {
         principal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
-        nome = new javax.swing.JLabel();
+        lb_nome = new javax.swing.JLabel();
         varNome = new javax.swing.JTextField();
         btSalvar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lb_idade = new javax.swing.JLabel();
         varIdade = new javax.swing.JFormattedTextField();
+        lb_telefone = new javax.swing.JLabel();
+        varTelefone = new javax.swing.JFormattedTextField();
+        lb_salario = new javax.swing.JLabel();
+        varSalario = new javax.swing.JFormattedTextField();
+        lb_logradouro = new javax.swing.JLabel();
+        varLogradouro = new javax.swing.JTextField();
+        lb_numero = new javax.swing.JLabel();
+        varNumero = new javax.swing.JFormattedTextField();
+        lb_bairro = new javax.swing.JLabel();
+        varBairro = new javax.swing.JTextField();
+        lb_cpf = new javax.swing.JLabel();
+        varCpf = new javax.swing.JFormattedTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -70,9 +82,9 @@ public class CadastroAluno extends javax.swing.JFrame {
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("Cadastro Aluno");
 
-        nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        nome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        nome.setText("Nome:");
+        lb_nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_nome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_nome.setText("Nome:");
 
         btSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSalvar.setText("Salvar");
@@ -82,11 +94,85 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Idade:");
+        lb_idade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_idade.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_idade.setText("Idade:");
 
-        varIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        try {
+            varIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        varIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varIdadeActionPerformed(evt);
+            }
+        });
+
+        lb_telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_telefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_telefone.setText("Telefone:");
+
+        try {
+            varTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        varTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varTelefoneActionPerformed(evt);
+            }
+        });
+
+        lb_salario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_salario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_salario.setText("Salario:");
+
+        varSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,###.00"))));
+        varSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varSalarioActionPerformed(evt);
+            }
+        });
+
+        lb_logradouro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_logradouro.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_logradouro.setText("Logradouro:");
+
+        varLogradouro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varLogradouroActionPerformed(evt);
+            }
+        });
+
+        lb_numero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_numero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_numero.setText("Numero:");
+
+        lb_bairro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_bairro.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_bairro.setText("Bairro:");
+
+        varBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varBairroActionPerformed(evt);
+            }
+        });
+
+        lb_cpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_cpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_cpf.setText("CPF:");
+
+        try {
+            varCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        varCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varCpfActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,14 +181,29 @@ public class CadastroAluno extends javax.swing.JFrame {
             .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lb_cpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_bairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_numero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_logradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_salario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_telefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_idade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(varNome)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(varSalario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(varTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                        .addComponent(varLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                    .addComponent(varNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(varCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(varBairro, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,15 +212,39 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome)
+                    .addComponent(lb_nome)
                     .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lb_idade)
                     .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
-                .addComponent(btSalvar)
-                .addGap(147, 147, 147))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_telefone)
+                    .addComponent(varTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_salario)
+                    .addComponent(varSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_logradouro)
+                    .addComponent(varLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_numero)
+                    .addComponent(varNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_bairro)
+                    .addComponent(varBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_cpf)
+                    .addComponent(varCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
         );
 
         pack();
@@ -129,6 +254,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         aluno = new Aluno();
+
         boolean erro = validarFormulario();
         if (!erro) {
             JOptionPane.showMessageDialog(null, "Salvo");
@@ -146,11 +272,68 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         if (validarIdade()) {
             JOptionPane.showMessageDialog(null, "Digite uma idade valida! ");
+            return true;
+
+        }
+
+        if (validarTelefone()) {
+            JOptionPane.showMessageDialog(null, "Digite um telefone Valido! ");
+            return true;
+        }
+
+        if (validarSalario()) {
+            JOptionPane.showMessageDialog(null, "Digite um salario Valido! ");
+            return true;
+        }
+        String Logradouro = varNome.getText().trim();
+        if (validarCampo3Valor(Logradouro)) {
+            JOptionPane.showMessageDialog(null, "Digite um logradouro Valido! ");
+            return true;
+        }
+
+        if (validarNumero()) {
+            JOptionPane.showMessageDialog(null, "Digite um numero Valido! ");
+            return true;
+        }
+        String Bairro = varNome.getText().trim();
+        if (validarCampo3Valor(Bairro)) {
+        JOptionPane.showMessageDialog(null, "Digite um bairro Valido! ");
+        return true;
+            
+        } 
+        
+        if (validarCpf()){
+            JOptionPane.showMessageDialog(null, "Digite um CPF Valido! ");
+            return true;
         }
 
         return false;
 
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void varTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varTelefoneActionPerformed
+
+    private void varIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varIdadeActionPerformed
+
+    private void varSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varSalarioActionPerformed
+
+    private void varLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varLogradouroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varLogradouroActionPerformed
+
+    private void varBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varBairroActionPerformed
+
+    private void varCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varCpfActionPerformed
 
     private boolean validarIdade() {
         //boolean temErro = false;
@@ -160,11 +343,33 @@ public class CadastroAluno extends javax.swing.JFrame {
         } else {
             int valorIdade = Integer.parseInt(idade);
             return valorIdade <= 16 || valorIdade >= 100;
-            }
         }
+    }
+
+    private boolean validarTelefone() {
+        String telefone = varTelefone.getText().trim();
+        return telefone.length() < 11;
+
+    }
+
+    private boolean validarSalario() {
+        String salario = varSalario.getText().trim();
+        return salario.equals("") || salario.equals(",00");
+
+    }
 
     private boolean validarCampo3Valor(String valor) {
         return valor.length() < 3;
+    }
+
+    private boolean validarNumero() {
+        String numero = varNumero.getText().trim();
+        return numero.equals("") || numero.equals("0");
+
+    }
+    private boolean validarCpf() {
+        String cpf = varCpf.getText().trim();
+        return cpf.length()!= 11;
     }
 
     /**
@@ -205,11 +410,23 @@ public class CadastroAluno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSalvar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel nome;
+    private javax.swing.JLabel lb_bairro;
+    private javax.swing.JLabel lb_cpf;
+    private javax.swing.JLabel lb_idade;
+    private javax.swing.JLabel lb_logradouro;
+    private javax.swing.JLabel lb_nome;
+    private javax.swing.JLabel lb_numero;
+    private javax.swing.JLabel lb_salario;
+    private javax.swing.JLabel lb_telefone;
     private javax.swing.JPanel principal;
     private javax.swing.JLabel titulo;
+    private javax.swing.JTextField varBairro;
+    private javax.swing.JFormattedTextField varCpf;
     private javax.swing.JFormattedTextField varIdade;
+    private javax.swing.JTextField varLogradouro;
     private javax.swing.JTextField varNome;
+    private javax.swing.JFormattedTextField varNumero;
+    private javax.swing.JFormattedTextField varSalario;
+    private javax.swing.JFormattedTextField varTelefone;
     // End of variables declaration//GEN-END:variables
 }

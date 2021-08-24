@@ -4,22 +4,21 @@
  * and open the template in the editor.
  */
 package tela;
-
-import entidade.Aluno;
+import entidade.Professor;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author geovani.junior
  */
-public class CadastroAluno extends javax.swing.JFrame {
-
-    private Aluno aluno;
+public class CadastroProfessor extends javax.swing.JFrame {
+    
+    private Professor professor;
 
     /**
      * Creates new form CadastroAluno
      */
-    public CadastroAluno() {
+    public CadastroProfessor() {
         initComponents();
     }
 
@@ -38,20 +37,18 @@ public class CadastroAluno extends javax.swing.JFrame {
         lb_nome = new javax.swing.JLabel();
         varNome = new javax.swing.JTextField();
         btSalvar = new javax.swing.JButton();
-        lb_idade = new javax.swing.JLabel();
-        varIdade = new javax.swing.JFormattedTextField();
+        lb_email = new javax.swing.JLabel();
+        varEmail = new javax.swing.JTextField();
         lb_telefone = new javax.swing.JLabel();
         varTelefone = new javax.swing.JFormattedTextField();
-        lb_salario = new javax.swing.JLabel();
-        varSalario = new javax.swing.JFormattedTextField();
+        lb_cracha = new javax.swing.JLabel();
+        varCracha = new javax.swing.JFormattedTextField();
         lb_logradouro = new javax.swing.JLabel();
         varLogradouro = new javax.swing.JTextField();
-        lb_numero = new javax.swing.JLabel();
-        varNumero = new javax.swing.JFormattedTextField();
         lb_bairro = new javax.swing.JLabel();
         varBairro = new javax.swing.JTextField();
-        lb_cpf = new javax.swing.JLabel();
-        varCpf = new javax.swing.JFormattedTextField();
+        lb_cidade = new javax.swing.JLabel();
+        varCidade = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -74,17 +71,22 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Cliente");
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         setForeground(java.awt.Color.black);
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Cadastro Aluno");
+        titulo.setText("Cadastro Professor");
 
         lb_nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lb_nome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_nome.setText("Nome:");
+
+        varNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varNomeActionPerformed(evt);
+            }
+        });
 
         btSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSalvar.setText("Salvar");
@@ -94,20 +96,9 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        lb_idade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lb_idade.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb_idade.setText("Idade:");
-
-        try {
-            varIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        varIdade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                varIdadeActionPerformed(evt);
-            }
-        });
+        lb_email.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_email.setText("Email:");
 
         lb_telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lb_telefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -118,36 +109,20 @@ public class CadastroAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        varTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                varTelefoneActionPerformed(evt);
-            }
-        });
 
-        lb_salario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lb_salario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb_salario.setText("Salario:");
+        lb_cracha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_cracha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_cracha.setText("Cracha:");
 
-        varSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,###.00"))));
-        varSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                varSalarioActionPerformed(evt);
-            }
-        });
+        try {
+            varCracha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         lb_logradouro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lb_logradouro.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_logradouro.setText("Logradouro:");
-
-        varLogradouro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                varLogradouroActionPerformed(evt);
-            }
-        });
-
-        lb_numero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lb_numero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb_numero.setText("Numero:");
 
         lb_bairro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lb_bairro.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -159,20 +134,9 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        lb_cpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lb_cpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb_cpf.setText("CPF:");
-
-        try {
-            varCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        varCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                varCpfActionPerformed(evt);
-            }
-        });
+        lb_cidade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lb_cidade.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_cidade.setText("Cidade:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,28 +145,39 @@ public class CadastroAluno extends javax.swing.JFrame {
             .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lb_cpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_bairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_numero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_logradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_salario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_telefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_idade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(varNome)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(varSalario)
-                        .addComponent(varTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(varLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lb_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lb_email, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(varEmail))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lb_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(varTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lb_cracha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(varCracha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lb_logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(varLogradouro)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(varCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(varBairro, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(varNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lb_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(varCidade))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lb_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(varBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -215,81 +190,71 @@ public class CadastroAluno extends javax.swing.JFrame {
                     .addComponent(varNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_idade)
-                    .addComponent(varIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_email)
+                    .addComponent(varEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_telefone)
                     .addComponent(varTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_salario)
-                    .addComponent(varSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_cracha)
+                    .addComponent(varCracha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_logradouro)
                     .addComponent(varLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_numero)
-                    .addComponent(varNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_bairro)
                     .addComponent(varBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_cpf)
-                    .addComponent(varCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130))
+                    .addComponent(lb_cidade)
+                    .addComponent(varCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(btSalvar)
+                .addGap(147, 147, 147))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void varNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varNomeActionPerformed
+
+    }//GEN-LAST:event_varNomeActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        aluno = new Aluno();
+    professor = new Professor();
 
         boolean erro = validarFormulario();
         if (!erro) {
             JOptionPane.showMessageDialog(null, "Salvo");
         }
-    }
 
+    }//GEN-LAST:event_btSalvarActionPerformed
     private boolean validarFormulario() {
 
-        String nome = varNome.getText().trim();
-        if (validarCampo3Valor(nome)) {
+        String Nome = varNome.getText().trim();
+        if (validarCampo3Valor(Nome)) {
             JOptionPane.showMessageDialog(null, "digite um nome correto!");
 
             return true;
         }
 
-        if (validarIdade()) {
-            JOptionPane.showMessageDialog(null, "Digite uma idade valida! ");
-            return true;
-
-        }
 
         if (validarTelefone()) {
             JOptionPane.showMessageDialog(null, "Digite um telefone Valido! ");
             return true;
         }
-
-        if (validarSalario()) {
-            JOptionPane.showMessageDialog(null, "Digite um salario Valido! ");
+        if (validarCracha()) {
+            JOptionPane.showMessageDialog(null, "Digite um cracha Valido! ");
             return true;
         }
+
         String Logradouro = varNome.getText().trim();
         if (validarCampo3Valor(Logradouro)) {
-            JOptionPane.showMessageDialog(null, "Digite um logradouro Valido! ");
-            return true;
-        }
-        if (validarNumero()) {
             JOptionPane.showMessageDialog(null, "Digite um logradouro Valido! ");
             return true;
         }
@@ -301,81 +266,31 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         }
 
-        if (validarCpf()) {
-            JOptionPane.showMessageDialog(null, "Digite um CPF Valido! ");
-            return true;
-        }
+
 
         return false;
 
-    }//GEN-LAST:event_btSalvarActionPerformed
-
-    private void varTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_varTelefoneActionPerformed
-
-    private void varIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varIdadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_varIdadeActionPerformed
-
-    private void varSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varSalarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_varSalarioActionPerformed
-
-    private void varLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varLogradouroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_varLogradouroActionPerformed
-
+    } 
+    
     private void varBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varBairroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_varBairroActionPerformed
-
-    private void varCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_varCpfActionPerformed
-
-    private boolean validarIdade() {
-        //boolean temErro = false;
-        String idade = varIdade.getText().trim();
-        if (idade.equals("")) {
-            return true;
-        } else {
-            int valorIdade = Integer.parseInt(idade);
-            return valorIdade <= 16 || valorIdade >= 100;
-        }
-    }
-
     private boolean validarTelefone() {
         String telefone = varTelefone.getText().trim();
         return telefone.length() < 11;
 
     }
-
-    private boolean validarSalario() {
-        String salario = varSalario.getText().trim();
-        return salario.equals("") || salario.equals(",00");
+    private boolean validarCracha() {
+        String cracha = varCracha.getText().trim();
+        return cracha.equals("") || cracha.equals(00000);
 
     }
-
-    private boolean validarCampo3Valor(String valor) {
+        private boolean validarCampo3Valor(String valor) {
         return valor.length() < 3;
     }
+       
 
-    private boolean validarNumero() {
-        String numero = varNumero.getText().trim();
-        return numero.equals("") || numero.equals("0");
-
-    }
-
-    private boolean validarCpf() {
-        String cpf = varCpf.getText().trim();
-        char indice = cpf.charAt(0);
-        if (indice == ' ') {
-
-        }
-
-        return false;
-    }
+    
 
     /**
      * @param args the command line arguments
@@ -394,20 +309,23 @@ public class CadastroAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroAluno().setVisible(true);
+                new CadastroProfessor().setVisible(true);
             }
         });
     }
@@ -416,22 +334,20 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JButton btSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lb_bairro;
-    private javax.swing.JLabel lb_cpf;
-    private javax.swing.JLabel lb_idade;
+    private javax.swing.JLabel lb_cidade;
+    private javax.swing.JLabel lb_cracha;
+    private javax.swing.JLabel lb_email;
     private javax.swing.JLabel lb_logradouro;
     private javax.swing.JLabel lb_nome;
-    private javax.swing.JLabel lb_numero;
-    private javax.swing.JLabel lb_salario;
     private javax.swing.JLabel lb_telefone;
     private javax.swing.JPanel principal;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField varBairro;
-    private javax.swing.JFormattedTextField varCpf;
-    private javax.swing.JFormattedTextField varIdade;
+    private javax.swing.JTextField varCidade;
+    private javax.swing.JFormattedTextField varCracha;
+    private javax.swing.JTextField varEmail;
     private javax.swing.JTextField varLogradouro;
     private javax.swing.JTextField varNome;
-    private javax.swing.JFormattedTextField varNumero;
-    private javax.swing.JFormattedTextField varSalario;
     private javax.swing.JFormattedTextField varTelefone;
     // End of variables declaration//GEN-END:variables
 }
